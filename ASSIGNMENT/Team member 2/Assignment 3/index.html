@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Home</title>
+<link rel="stylesheet" href="{{url_for('redirect_to',link='https://s3.jp-tok.cloud-object- storage.appdomain.cloud/cloudbucket/assign3.css')}}" type="text/css">
+<script>
+   window.watsonAssistantChatOptions = {
+    integrationID: "164dec9a-d6cf-4e41-b15c-d5417f531d5d", // The ID of this integration.
+    region: "au-syd", // The region your integration is hosted in.
+    serviceInstanceID: "b00af12f-5f32-42c4-a2b9-2e65e95c7515", // The ID of your service instance.
+    onLoad: function(instance) { instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+</script> 
+  </head>
+<body>
+<form action="/uploader" method="POST" enctype="multipart/form-data">
+<input type="text" placeholder="Enter file name" name="filename" />
+<br />
+<br />
+<input type="file" name="file" />
+<br />
+<br />
+<input type="submit" />
+
+       </form>
+<br/>
+<br/>
+<br/>
+{% for row in files %}
+<div style="border: 1px solid #EFEFEF;margin:10px;">
+<h3>Filename : {{row}} </h3>
+<img src="https://cloudbucket.s3.jp-tok.cloud-object-storage.appdomain.cloud/{{row}}" width="150px"></td>
+</div>
+{% endfor %}
+</body>
+</html>
+
